@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 12:10:11 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/05 15:29:24 by engiacom         ###   ########.fr       */
+/*   Created: 2024/11/05 20:12:08 by engiacom          #+#    #+#             */
+/*   Updated: 2024/11/05 20:19:57 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include "libft.h"
 
-int	ft_isascii(int c)
+size_t	strlcpy(char *dst, const char *src, size_t size)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	else
-		return (0);
+	
 }

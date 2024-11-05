@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 12:10:11 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/05 15:29:24 by engiacom         ###   ########.fr       */
+/*   Created: 2024/11/05 16:47:22 by engiacom          #+#    #+#             */
+/*   Updated: 2024/11/05 18:19:58 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include "libft.h"
 
-int	ft_isascii(int c)
+void	ft_bzero(void *s, size_t n)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	else
-		return (0);
+	unsigned char	*ptr;
+	size_t	i;
+	
+	ptr = (unsigned char *)s;
+	i = 0;
+	while (i < n - 1)
+	{
+		ptr[i] = 0;
+		i++;
+	}
 }
