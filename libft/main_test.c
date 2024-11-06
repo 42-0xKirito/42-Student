@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42.fr>          +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:26:07 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/06 02:48:29 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:30:13 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,61 @@ void	ft_test_strlcpy()
 	printf("Test [] [Hello World!] [6] | Expected [12] [Hello] : Result [%zu] [%s]\n", ft_strlcpy(dest, src, 6), dest);
 }
 
+void	ft_test_strlcat()
+{
+	char *src = " World!";
+	char dest[] = "Hello";
+	printf("\nft_strlcat\n\n");
+	printf("Test [Hello] [ World!] [13] | Expected [12] [Hello World!] : Result [%zu] [%s]\n", ft_strlcat(dest, src, 13), dest);
+}
+
+void	ft_test_toupper()
+{
+	printf("\nft_toupper\n\n");
+	printf("Test [a] [z] [7] [A] [;] | Expected [A] [Z] [7] [A] [;] : Result [%c] [%c] [%c] [%c] [%c]\n", ft_toupper('a'), ft_toupper('z'), ft_toupper('7'), ft_toupper('A'), ft_toupper(';'));
+}
+
+void	ft_test_tolower()
+{
+	printf("\nft_toupper\n\n");
+	printf("Test [A] [Z] [7] [a] [;] | Expected [a] [z] [7] [a] [;] : Result [%c] [%c] [%c] [%c] [%c]\n", ft_tolower('A'), ft_tolower('Z'), ft_tolower('7'), ft_tolower('a'), ft_tolower(';'));
+}
+
+void	ft_test_strchr()
+{
+	printf("\nft_strchr\n\n");
+	printf("Test [Hello World!] [87] | Expected [World!] : Result [%s]\n", ft_strchr("Hello World!", 87));
+	printf("Test [Hello World!] [15] | Expected [(null)] : Result [%s]\n", ft_strchr("Hello World!", 15));
+}
+
+void	ft_test_strrchr()
+{
+	printf("\nft_strrchr\n\n");
+	printf("Test [ABC 123 ABC 456] [65] | Expected [ABC 456] : Result [%s]\n", ft_strrchr("ABC 123 ABC 456", 65));
+	printf("Test [Hello World!] [15] | Expected [(null)] : Result [%s]\n", ft_strrchr("Hello World!", 15));
+}
+
+void	ft_test_strncmp()
+{
+	printf("\nft_strncmp\n\n");
+	printf("Test [Hello World!] [Hello Moon!] [5] | Expected [0] : Result [%d]\n", ft_strncmp("Hello World!", "Hello Moon!", 5));
+	printf("Test [Hello World!] [Hello Moon!] [7] | Expected [10] : Result [%d]\n", ft_strncmp("Hello World!", "Hello Moon!", 7));
+}
+
+void	ft_test_memchr()
+{
+	printf("\nft_memchr\n\n");
+	printf("Test [Hello World!] [87] [12] | Expected [World!] : Result [%s]\n", (char *)ft_memchr("Hello World!", 87, 12));
+	printf("Test [Hello World!] [15] [12] | Expected [(null)] : Result [%s]\n", (char *)ft_memchr("Hello World!", 15, 12));
+}
+
+void	ft_test_memcmp()
+{
+	printf("\nft_memcmp\n\n");
+	printf("Test [Hello World!] [Hello Moon!] [7] | Expected [10] : Result [%d]\n", ft_memcmp("Hello World!", "Hello Moon!", 7));
+	printf("Test [Hello World!] [Hello Moon!] [5] | Expected [0] : Result [%d]\n", ft_memcmp("Hello World!", "Hello Moon!", 5));
+}
+
 int	main()
 {
 	ft_test_isalnum();
@@ -126,4 +181,12 @@ int	main()
 	ft_test_memcpy();
 	ft_test_memmove();
 	ft_test_strlcpy();
+	ft_test_strlcat();
+	ft_test_toupper();
+	ft_test_tolower();
+	ft_test_strchr();
+	ft_test_strrchr();
+	ft_test_strncmp();
+	ft_test_memchr();
+	ft_test_memcmp();
 }
