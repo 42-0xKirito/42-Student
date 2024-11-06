@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 17:15:02 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/07 00:31:00 by engiacom         ###   ########.fr       */
+/*   Created: 2024/11/06 22:00:48 by engiacom          #+#    #+#             */
+/*   Updated: 2024/11/07 00:31:48 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+size_t	ft_dup_strlen(const char *s)
 {
-	unsigned char	*dest_tmp;
-	unsigned char	*src_tmp;
-	size_t			i;
+	int	i;
 
 	i = 0;
-	dest_tmp = (unsigned char *)dest;
-	src_tmp = (unsigned char *)src;
-	while (i < n)
+	while (s[i] != 0)
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*dst;
+	int		i;
+
+	i = 0;
+	dst = malloc(ft_dup_strlen(s) * sizeof(char) + 1);
+	if (dst == NULL)
+		return (NULL);
+	while (s[i])
 	{
-		dest_tmp[i] = src_tmp[i];
+		dst[i] = s[i];
 		i++;
 	}
-	return (dest);
+	dst[i] = 0;
+	return (dst);
 }

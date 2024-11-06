@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 17:15:02 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/07 00:31:00 by engiacom         ###   ########.fr       */
+/*   Created: 2024/11/06 18:32:41 by engiacom          #+#    #+#             */
+/*   Updated: 2024/11/07 00:26:09 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_atoi(const char *nptr)
 {
-	unsigned char	*dest_tmp;
-	unsigned char	*src_tmp;
-	size_t			i;
+	int	i;
+	int	n;
+	int	res;
 
 	i = 0;
-	dest_tmp = (unsigned char *)dest;
-	src_tmp = (unsigned char *)src;
-	while (i < n)
+	n = 0;
+	res = 1;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		dest_tmp[i] = src_tmp[i];
+		if (nptr[i] == '-')
+			res *= -1;
 		i++;
 	}
-	return (dest);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		n = n * 10 + nptr[i] - 48;
+		i++;
+	}
+	return (n * res);
 }

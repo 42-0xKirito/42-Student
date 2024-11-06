@@ -6,7 +6,7 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 16:33:45 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/06 16:40:41 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/07 00:33:08 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	{
 		i++;
 	}
-	return(s1[i] - s2[i]);
+	return (s1[i] - s2[i]);
 }

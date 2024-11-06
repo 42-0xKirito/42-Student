@@ -6,11 +6,10 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:26:07 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/06 17:30:13 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/06 23:44:44 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 
 void	ft_test_isalnum()
@@ -116,9 +115,9 @@ void	ft_test_strlcpy()
 void	ft_test_strlcat()
 {
 	char *src = " World!";
-	char dest[] = "Hello";
+	char dest[13] = "Hello";
 	printf("\nft_strlcat\n\n");
-	printf("Test [Hello] [ World!] [13] | Expected [12] [Hello World!] : Result [%zu] [%s]\n", ft_strlcat(dest, src, 13), dest);
+	printf("Test [Hello] [ World!] [13] | Expected [12] [Hello World!] : Result [%zu] [%s]\n", ft_strlcat(dest, src, sizeof(dest)), dest);
 }
 
 void	ft_test_toupper()
@@ -168,6 +167,40 @@ void	ft_test_memcmp()
 	printf("Test [Hello World!] [Hello Moon!] [5] | Expected [0] : Result [%d]\n", ft_memcmp("Hello World!", "Hello Moon!", 5));
 }
 
+void	ft_test_strnstr()
+{
+	printf("\nft_strnstr\n\n");
+	printf("Test [Hello World!] [World] [12] | Expected [World!] : Result [%s]\n", ft_strnstr("Hello World!", "World", 12));
+	printf("Test [Hello World!] [World] [5] | Expected [(null)] : Result [%s]\n", ft_strnstr("Hello World!", "World", 5));
+	printf("Test [Hello World!] [] [12] | Expected [Hello World!] : Result [%s]\n", ft_strnstr("Hello World!", "", 12));
+}
+
+void	ft_test_atoi()
+{
+	printf("\nft_atoi\n\n");
+	printf("Test [-12345ABC;154] | Expected [-12345] : Result [%d]\n", ft_atoi("-12345ABC;154"));
+	printf("Test [  -+--12345ABC;154] | Expected [0] : Result [%d]\n", ft_atoi("  -+--12345ABC;154"));
+}
+
+// void	ft_test_calloc()
+// {
+// 	char	*str = "fjbflqjbfklqjflkqbkl";
+// 	char	str1[20];
+	
+// 	//str1 = (char *)malloc(80);
+// 	str = (char *)ft_calloc(0,0);
+	
+// 	printf("\nft_calloc\n\n");
+// 	printf("%s\n", str);
+// 	printf("%s\n", str1 );
+// }
+
+void	ft_test_strdup()
+{
+	printf("\nft_strdup\n\n");
+	printf("Test [Hello World!] | Expected [Hello World!] : Result [%s]\n", ft_strdup("Hello World!"));
+}
+
 int	main()
 {
 	ft_test_isalnum();
@@ -189,4 +222,8 @@ int	main()
 	ft_test_strncmp();
 	ft_test_memchr();
 	ft_test_memcmp();
+	ft_test_strnstr();
+	ft_test_atoi();
+	// ft_test_calloc();
+	ft_test_strdup();
 }

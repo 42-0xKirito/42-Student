@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42.fr>          +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:45:58 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/06 02:33:07 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/07 00:31:12 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char	*dest_tmp;
 	unsigned char	*src_tmp;
-	size_t	i;
+	size_t			i;
 
 	dest_tmp = (unsigned char *)dest;
 	src_tmp = (unsigned char *)src;

@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 17:15:02 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/07 00:31:00 by engiacom         ###   ########.fr       */
+/*   Created: 2024/11/06 17:36:07 by engiacom          #+#    #+#             */
+/*   Updated: 2024/11/07 00:35:25 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned char	*dest_tmp;
-	unsigned char	*src_tmp;
-	size_t			i;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	dest_tmp = (unsigned char *)dest;
-	src_tmp = (unsigned char *)src;
-	while (i < n)
+	if (little[0] == 0)
+		return ((char *)big);
+	while (big[i] && i < len)
 	{
-		dest_tmp[i] = src_tmp[i];
+		j = 0;
+		while (big[i + j] == little[j])
+		{
+			j++;
+			if (little[j] == 0)
+				return ((char *)&big[i]);
+		}
 		i++;
 	}
-	return (dest);
+	return (NULL);
 }
