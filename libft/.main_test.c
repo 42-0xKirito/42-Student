@@ -6,7 +6,7 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:26:07 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/08 15:42:01 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/08 16:48:20 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,6 +222,15 @@ void	ft_test_strtrim()
 void	ft_test_split()
 {
 	printf("\nft_split\n\n");
+	printf("Test [..Hello...World...!..] [.]\nExpected tab[0] [Hello] tab[1] [World] tab[2] [!] tab[3] [(null)]\nResult : ");
+	char **tab = ft_split("..Hello...World...!..", '.');
+	int i = 0;
+	while (tab[i] != NULL)
+	{
+		printf("tab[%d] [%s] ",i, tab[i]);
+		i++;
+	}
+	printf("tab[%d] [%s]\n", i, tab[i]);
 }
 
 void	ft_test_itoa()
@@ -231,6 +240,11 @@ void	ft_test_itoa()
 	printf("%s\n", ft_itoa(0));
 	printf("%s\n", ft_itoa(-2147483648));
 	printf("%s\n", ft_itoa(2147483647));
+}
+
+void	ft_test_strmapi()
+{
+	printf("\nft_strmapi\n\n");
 }
 
 int	main()
@@ -263,4 +277,5 @@ int	main()
 	ft_test_strtrim();
 	ft_test_split();
 	ft_test_itoa();
+	//ft_test_strmapi();
 }
