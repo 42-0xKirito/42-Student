@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_test.c                                        :+:      :+:    :+:   */
+/*   .main_test.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:26:07 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/06 23:44:44 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/07 22:49:28 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ void	ft_test_strrchr()
 void	ft_test_strncmp()
 {
 	printf("\nft_strncmp\n\n");
-	printf("Test [Hello World!] [Hello Moon!] [5] | Expected [0] : Result [%d]\n", ft_strncmp("Hello World!", "Hello Moon!", 5));
+	printf("Test [Hello World!] [Hello Moon!] [5] | Expected [0] : Result [%d]\n", ft_strncmp("abcdefgh", "abcdwxyz", 4));
 	printf("Test [Hello World!] [Hello Moon!] [7] | Expected [10] : Result [%d]\n", ft_strncmp("Hello World!", "Hello Moon!", 7));
 }
 
@@ -201,6 +201,29 @@ void	ft_test_strdup()
 	printf("Test [Hello World!] | Expected [Hello World!] : Result [%s]\n", ft_strdup("Hello World!"));
 }
 
+void	ft_test_substr()
+{
+	printf("\nft_substr\n\n");
+	printf("Test [Hello World!] [6] [6] | Expected [World!] : Result [%s]\n", ft_substr("Hello World!", 6, 0));
+}
+
+void	ft_test_strjoin()
+{
+	printf("\nft_strjoin\n\n");
+	printf("%s\n", ft_strjoin("Hello ", "World!"));
+}
+
+void	ft_test_strtrim()
+{
+	printf("\nft_strtrim\n\n");
+	printf("Test [.*.*.Hello.*.World!.*.*.] [.*] | Expected [Hello.*.World!] : Result [%s]\n", ft_strtrim((".*.*.Hello.*.World!.*.*."), ".*"));
+}
+
+void	ft_test_split()
+{
+	printf("\nft_split\n\n");
+}
+
 int	main()
 {
 	ft_test_isalnum();
@@ -226,4 +249,8 @@ int	main()
 	ft_test_atoi();
 	// ft_test_calloc();
 	ft_test_strdup();
+	ft_test_substr();
+	ft_test_strjoin();
+	ft_test_strtrim();
+	ft_test_split();
 }

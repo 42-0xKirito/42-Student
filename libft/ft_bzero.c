@@ -6,7 +6,7 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 16:47:22 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/07 00:27:32 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:47:09 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_bzero(void *s, size_t n)
 
 	ptr = (unsigned char *)s;
 	i = 0;
-	while (i < n - 1)
+	while (i < n)
 	{
 		ptr[i] = 0;
 		i++;

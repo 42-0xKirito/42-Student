@@ -6,7 +6,7 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:15:02 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/07 00:31:00 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/07 18:59:15 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	size_t			i;
 
 	i = 0;
+	if (dest == src || n == 0)
+		return (dest);
 	dest_tmp = (unsigned char *)dest;
 	src_tmp = (unsigned char *)src;
 	while (i < n)

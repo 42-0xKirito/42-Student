@@ -6,21 +6,11 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 22:00:48 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/07 00:31:48 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/07 15:41:49 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-size_t	ft_dup_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != 0)
-		i++;
-	return (i);
-}
 
 char	*ft_strdup(const char *s)
 {
@@ -28,7 +18,7 @@ char	*ft_strdup(const char *s)
 	int		i;
 
 	i = 0;
-	dst = malloc(ft_dup_strlen(s) * sizeof(char) + 1);
+	dst = malloc(ft_strlen(s) * sizeof(char) + 1);
 	if (dst == NULL)
 		return (NULL);
 	while (s[i])

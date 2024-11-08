@@ -6,7 +6,7 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 16:43:17 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/07 00:30:33 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/07 18:20:51 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	str = (unsigned char *)s;
 	i = 0;
-	while (str[i] != c && str[i] && i < n)
+	if (n == 0)
+		return (NULL);
+	while (str[i] != (unsigned char)c && i < n - 1)
 		i++;
-	if (c == str[i])
+	if ((unsigned char)c == str[i])
 		return (&str[i]);
 	return (NULL);
 }

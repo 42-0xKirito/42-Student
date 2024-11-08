@@ -6,7 +6,7 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 16:24:00 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/07 00:35:42 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/07 18:18:42 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*ft_strrchr(const char *s, int c)
 	i = 0;
 	while (s[i])
 		i++;
-	while (c != s[i] && i != 0)
+	while ((unsigned char)c != s[i] && i != 0)
 		i--;
-	if (c == s[i])
+	if ((unsigned char)c == s[i])
 		return ((char *)&s[i]);
 	return (NULL);
 }

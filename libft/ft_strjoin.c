@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 16:33:45 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/07 17:42:45 by engiacom         ###   ########.fr       */
+/*   Created: 2024/11/07 19:04:38 by engiacom          #+#    #+#             */
+/*   Updated: 2024/11/07 19:54:18 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
+	char		*res;
+	size_t		len;
 
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] == s2[i] && s1[i] && s2[i] && i < n - 1)
-	{
-		i++;
-	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	len = (ft_strlen(s1) + ft_strlen(s2));
+	res = ft_calloc((len + 1) * sizeof(char), 1);
+	if (res == NULL)
+		return (NULL);
+	ft_strlcat(res, s1, ft_strlen(s1) + 1);
+	ft_strlcat(res, s2, (ft_strlen(res) + ft_strlen(s2)) + 1);
+	return (res);
 }
