@@ -6,13 +6,16 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 15:20:04 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/07 22:48:23 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:43:50 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
+#ifndef LIBFT_H
+# define LIBFT_H
+
+# include <string.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
@@ -24,6 +27,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *s);
 char	**ft_split(char const *s, char c);
+char	*ft_itoa(int n);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
@@ -41,3 +45,5 @@ int		ft_tolower(int c);
 int		ft_atoi(const char *nptr);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+
+#endif

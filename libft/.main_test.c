@@ -6,7 +6,7 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:26:07 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/07 22:49:28 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:42:01 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,15 @@ void	ft_test_split()
 	printf("\nft_split\n\n");
 }
 
+void	ft_test_itoa()
+{
+	printf("\nft_itoa\n\n");
+	printf("%s\n", ft_itoa(1254));
+	printf("%s\n", ft_itoa(0));
+	printf("%s\n", ft_itoa(-2147483648));
+	printf("%s\n", ft_itoa(2147483647));
+}
+
 int	main()
 {
 	ft_test_isalnum();
@@ -253,4 +262,5 @@ int	main()
 	ft_test_strjoin();
 	ft_test_strtrim();
 	ft_test_split();
+	ft_test_itoa();
 }

@@ -3,43 +3,80 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42.fr>          +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:46:50 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/08 14:01:20 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:54:24 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_putnbr_char(int n)
-{
-	char	*res;
-	int	i;
-	int	tmp;
+#include "libft.h"
 
-	i = 0;
-	res = malloc(4 * sizeof(char));
-	while (n % 10 > 0)
+int	ft_len_int(int n)
+{
+	int	len;
+
+	len = 1;
+	while (n / 10 > 0)
 	{
-		tmp = n % 10;
-		res[i] = tmp + 48;
-		i++;
+		len *= 10;
 		n /= 10;
+	}
+	return (len);
+}
+
+char	*ft_putnbr_char(int n, char *res, int i)
+{
+	int	len;
+
+	len = ft_len_int(n);
+	while (len > 0)
+	{
+		res[i] = (n / len) + 48;
+		i++;
+		n %= len;
+		len /= 10;
 	}
 	res[i] = 0;
 	return (res);
 }
 
-// int main()
-// {
-// 	char *res = ft_putnbr_char(158);
-// 	int i = 0;
-// 	while(res[i])
-// 		i++;
-// 	while (i > 0)
-// 	{
-// 		printf("%c", res[i]);
-// 		i--;
-// 	}
-// 	printf("%c", res[i]);
-// 	printf("\n");
-// }
+int	ft_len_char(int n)
+{
+	int	len;
+
+	len = 1;
+	while (n / 10 > 0)
+	{
+		len++;
+		n /= 10;
+	}
+	return (len);
+}
+
+char	*ft_itoa(int n)
+{
+	int		sign;
+	char	*res;
+	int		i;
+
+	sign = 0;
+	i = 0;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n < 0)
+	{
+		sign = 1;
+		n *= -1;
+	}
+	res = ft_calloc(((ft_len_char(n) + 1) + sign), 1);
+	if (res == NULL)
+		return (NULL);
+	if (sign == 1)
+	{
+		res[i] = '-';
+		i++;
+	}
+	res = ft_putnbr_char(n, res, i);
+	return (res);
+}
