@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <engiacom@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 16:53:28 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/09 16:32:37 by engiacom         ###   ########.fr       */
+/*   Created: 2024/11/09 16:39:20 by engiacom          #+#    #+#             */
+/*   Updated: 2024/11/09 16:51:43 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+#include "libft.h"
+
+void	ft_putendl_fd(char *s, int fd)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
 	while (s[i] != 0)
 	{
-		(*f)(i, s + i);
+		write(fd, &s[i], 1);
 		i++;
 	}
+	write(fd, "\n", 1);
 }
