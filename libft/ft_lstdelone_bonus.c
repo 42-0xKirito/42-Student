@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 12:10:04 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/09 20:39:32 by engiacom         ###   ########.fr       */
+/*   Created: 2024/11/10 01:20:05 by engiacom          #+#    #+#             */
+/*   Updated: 2024/11/10 03:35:43 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-		|| (c >= '0' && c <= '9'))
-		return (1);
-	else
-		return (0);
+	del(lst->content);
+	free (lst);
 }

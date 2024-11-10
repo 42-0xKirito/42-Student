@@ -6,13 +6,13 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:46:50 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/08 15:54:24 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:26:11 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_len_int(int n)
+static int	ft_len_int(int n)
 {
 	int	len;
 
@@ -25,7 +25,7 @@ int	ft_len_int(int n)
 	return (len);
 }
 
-char	*ft_putnbr_char(int n, char *res, int i)
+static char	*ft_putnbr_char(int n, char *res, int i)
 {
 	int	len;
 
@@ -41,7 +41,7 @@ char	*ft_putnbr_char(int n, char *res, int i)
 	return (res);
 }
 
-int	ft_len_char(int n)
+static int	ft_len_char(int n)
 {
 	int	len;
 

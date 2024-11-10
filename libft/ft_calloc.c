@@ -6,12 +6,11 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:51:26 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/07 19:00:59 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:25:45 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {

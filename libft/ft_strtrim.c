@@ -6,13 +6,13 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 19:56:42 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/08 02:46:59 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:27:12 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	find_c(char const f, char const *s)
+static int	find_c(char const f, char const *s)
 {
 	int	i;
 

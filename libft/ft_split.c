@@ -6,13 +6,13 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 22:45:37 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/08 02:45:44 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/09 20:26:45 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_cw(char const *s, char c)
+static char	**ft_cw(char const *s, char c)
 {
 	int		i;
 	int		w;
@@ -35,7 +35,7 @@ char	**ft_cw(char const *s, char c)
 	return (tab);
 }
 
-void	ft_f_tab(char *tab, int len, const char *s)
+static void	ft_f_tab(char *tab, int len, const char *s)
 {
 	int	i;
 
@@ -48,7 +48,7 @@ void	ft_f_tab(char *tab, int len, const char *s)
 	tab[i] = 0;
 }
 
-int	ft_split_next(char const *s, char **res, char c)
+static int	ft_split_next(char const *s, char **res, char c)
 {
 	int	i;
 	int	len;

@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 12:10:04 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/09 20:39:32 by engiacom         ###   ########.fr       */
+/*   Created: 2024/11/10 02:27:58 by engiacom          #+#    #+#             */
+/*   Updated: 2024/11/10 03:41:26 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-		|| (c >= '0' && c <= '9'))
-		return (1);
-	else
-		return (0);
+	t_list	*head;
+	t_list	*tmp;
+
+	head = NULL;
+	while (lst)
+	{
+		tmp = ft_lstnew(f(lst->content));
+		if (tmp == NULL)
+		{
+			ft_lstclear(&head, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&head, tmp);
+		lst = lst->next;
+	}
+	return (head);
 }
