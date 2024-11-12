@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42.fr>          +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 12:49:07 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/12 16:39:57 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/12 20:49:45 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,32 @@ int	ft_puthex(unsigned long n, char c)
 		base = "0123456789ABCDEF";
 	if (n == 0)
 		return (ft_putchar('0'));
+	i = 0;
+	while (n != 0)
+	{
+		res[i] = base[n % 16];
+		n = n / 16;
+		i++;
+	}
+	j = i;
+	while (i--)
+	{
+		ft_putchar(res[i]);
+	}
+	return (j);
+}
+
+int	ft_puthex_p(unsigned long n, char c)
+{
+	char	res[25];
+	char	*base;
+	int	i;
+	int j;
+
+	if (c == 'x')
+		base = "0123456789abcdef";
+	if (n == 0)
+		return (0);
 	i = 0;
 	while (n != 0)
 	{

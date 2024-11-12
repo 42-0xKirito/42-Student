@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42.fr>          +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:55:19 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/12 16:45:56 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/12 20:55:53 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_format(char c, va_list args)
 {
 	int	print;
-	char *str;
+	unsigned long	p;
 	
 	print = 0;
 	if (c == 'c')
@@ -23,14 +23,16 @@ int	ft_format(char c, va_list args)
 	else if (c == 's')
 		print += ft_putstr(va_arg(args, char *));
 	else if (c == 'p')
-		print += ft_putstr("0x") + ft_puthex((unsigned long)(va_arg(args, void *)), 'x');
-	else if (c == 'd' || c == 'i' || c == 'u')
 	{
-		str = (ft_itoa(va_arg(args, int), c));
-		print += ft_putstr(str);
-		if (str[0] != 0)
-			free (str);
+		p = (unsigned long long)va_arg(args, void *);
+		if (p == 0)
+			return (ft_putstr("(nil)"));
+		print += ft_putstr("0x") + ft_puthex_p(p, 'x');
 	}
+	else if (c == 'd' || c == 'i')
+		print += ft_putnbr(va_arg(args, int));
+	else if (c == 'u')
+		print += ft_putnbr(va_arg(args, unsigned int));
 	else if (c == 'x' || c == 'X')
 		print += ft_puthex(va_arg(args, unsigned int), c);
 	else if (c == '%')
@@ -61,10 +63,10 @@ int	ft_printf(const char *s, ...)
 	return (print);
 }
 
-// int main()
-// {
-// 	void *ptr = "NULL";
-// 	int i = ft_printf("%p\n", ptr);
-// 	int j = printf("%p\n", ptr);
-// 	ft_printf("%d %d\n", i, j);
-// }
+int main()
+{
+	void *ptr = NULL;
+	ft_printf("%p\n", ptr);
+	printf("%p\n", 0);
+	//ft_printf("%d\n", i);
+}

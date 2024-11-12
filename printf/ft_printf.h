@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42.fr>          +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 12:57:21 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/12 16:05:04 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/12 20:15:49 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero(void *s, size_t n);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *s);
-int	ft_putnbr_base(unsigned int n);
+long	ft_putnbr(long nb);
+int	ft_puthex_p(unsigned long n, char c);
 
 #endif
