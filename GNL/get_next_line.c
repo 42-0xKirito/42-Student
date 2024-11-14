@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42.fr>          +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:22:27 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/14 13:21:26 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:35:07 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*get_next_line(int fd)
 	char *res;
 	int	i;
 	
-	res = malloc(BUFFER_SIZE * sizeof(char));
+	res = malloc(100 * sizeof(char));
 	i = 0;
 	while (read(fd, &c, 1) > 0 && c != '\n')
 	{
@@ -39,5 +39,8 @@ char	*get_next_line(int fd)
 int	main()
 {
 	int fd = open("test.txt", O_RDONLY);
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 }
