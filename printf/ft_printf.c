@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:55:19 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/13 15:49:09 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:54:36 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ int	ft_printf(const char *s, ...)
 	return (print);
 }
 
-// int main()
-// {
-// 	void *ptr = NULL;
-// 	ft_printf("%p\n", ptr);
-// 	printf("%p\n", ptr);
-// 	//ft_printf("%d\n", i);
-// }
+int main()
+{
+	//void *ptr = NULL;
+	ft_printf("%u\n", 6);
+	//printf("%p\n", ptr);
+	//ft_printf("%d\n", i);
+}
