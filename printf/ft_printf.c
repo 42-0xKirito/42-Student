@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42.fr>          +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:55:19 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/13 16:54:36 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/18 15:29:53 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_format(char c, va_list args)
 {
-	int	print;
+	int				print;
 	unsigned long	p;
-	
+
 	print = 0;
 	if (c == 'c')
 		print += ft_putchar(va_arg(args, int));
@@ -43,8 +43,8 @@ int	ft_format(char c, va_list args)
 int	ft_printf(const char *s, ...)
 {
 	va_list	args;
-	int	print;
-	int	i;
+	int		print;
+	int		i;
 
 	i = 0;
 	print = 0;

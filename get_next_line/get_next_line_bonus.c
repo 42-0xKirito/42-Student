@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 18:33:21 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/19 19:44:26 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/19 19:44:32 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,13 @@ char	*ft_newline(char *s)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*stash;
+	static char	*stash[4096];
 
-	stash = ft_read(stash, fd);
-	if (stash == NULL)
+	stash[fd] = ft_read(stash[fd], fd);
+	if (stash[fd] == NULL)
 		return (NULL);
-	line = ft_newline(stash);
-	stash = ft_newstash(stash);
+	line = ft_newline(stash[fd]);
+	stash[fd] = ft_newstash(stash[fd]);
 	return (line);
 }
 
@@ -114,10 +114,14 @@ char	*get_next_line(int fd)
 // int main(int argc, char **argv)
 // {
 //     int fd;
+// 	int fd2;
+// 	int fd3;
 //     char *line;
 
 // 	(void)argc;
 //     fd = open(argv[1], O_RDONLY);
+// 	fd2 = open(argv[2], O_RDONLY);
+// 	fd3 = open(argv[3], O_RDONLY);
 //     if (fd == -1)
 //     {
 //         perror("Error opening file");
@@ -126,14 +130,23 @@ char	*get_next_line(int fd)
 
 //     // Lire les lignes du fichier
 // 	int i = 0;
-//     while (i < 2)
+//     while (i < 4)
 //     {
 // 		line = get_next_line(fd);
 //         printf("%s", line);
 //         free(line);  // Libérer la mémoire allouée pour la ligne
+// 		line = get_next_line(fd2);
+//         printf("%s", line);
+//         free(line);
+// 		line = get_next_line(fd3);
+//         printf("%s", line);
+//         free(line);
+// 		printf("\n\n");
 // 		i++;
 //     }
 
 //     close(fd);
+// 	close(fd2);
+// 	close(fd3);
 //     return (0);
 // }

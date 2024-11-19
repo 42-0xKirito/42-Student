@@ -6,7 +6,7 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 12:49:07 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/12 20:49:45 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/14 20:27:23 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	ft_puthex(unsigned long n, char c)
 {
 	char	res[25];
 	char	*base;
-	int	i;
-	int j;
+	int		i;
+	int		j;
 
 	if (c == 'x')
 		base = "0123456789abcdef";
@@ -68,8 +68,8 @@ int	ft_puthex_p(unsigned long n, char c)
 {
 	char	res[25];
 	char	*base;
-	int	i;
-	int j;
+	int		i;
+	int		j;
 
 	if (c == 'x')
 		base = "0123456789abcdef";
