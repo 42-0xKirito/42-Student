@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: engiacom <engiacom@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 18:33:21 by engiacom          #+#    #+#             */
-/*   Updated: 2024/11/19 19:44:32 by engiacom         ###   ########.fr       */
+/*   Updated: 2024/11/22 18:44:34 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_read(char *s, int fd)
 {
