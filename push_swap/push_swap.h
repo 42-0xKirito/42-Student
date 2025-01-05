@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 13:24:06 by engiacom          #+#    #+#             */
-/*   Updated: 2025/01/04 17:43:26 by engiacom         ###   ########.fr       */
+/*   Created: 2025/01/04 18:12:27 by engiacom          #+#    #+#             */
+/*   Updated: 2025/01/04 18:14:05 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int	main()
+typedef struct	t_list
 {
-	
-}
+	t_list *content;
+	t_list	*next;
+}	t_struct;
