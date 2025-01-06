@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 12:57:21 by engiacom          #+#    #+#             */
-/*   Updated: 2025/01/04 22:42:38 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/01/06 01:54:09 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int		ft_puthex(unsigned long n, char c);
 size_t	ft_strlen(const char *s);
 long	ft_putnbr(long nb);
 int		ft_puthex_p(unsigned long n, char c);
-int	ft_atoi(const char *nptr);
+int		ft_atoi(const char *nptr);
 
 #endif

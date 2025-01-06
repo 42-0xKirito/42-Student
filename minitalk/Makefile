@@ -4,19 +4,18 @@ SRCSServer	= server.c src/*.c
 CC			= cc
 FLAGS		= -Wall -Werror -Wextra
 RM			= rm -f
-OBJS		= $(SRCSClient:.c=.o) $(SRCSServer:.c=.o)
+#OBJS		= $(SRCSClient:.c=.o) $(SRCSServer:.c=.o)
 
 all:	
 			$(CC) $(FLAGS) $(SRCSClient) -o client
-			$(CC) $(FLAGS) $(SRCSServer) -o server
+			$(CC) $(FLAGS) $(SRCSServer) -I includes -o server
 
 
-clean:
-			$(RM) $(OBJS)
+clean:		fclean
 
-fclean:		clean
+fclean:
 			$(RM) client server
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all fclean re
