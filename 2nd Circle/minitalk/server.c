@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 21:38:22 by engiacom          #+#    #+#             */
-/*   Updated: 2025/01/06 20:41:12 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/01/08 18:34:13 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "minitalk.h"
 #include "src/ft_printf.h"
 
-struct minitalk var = {0, 0};
+struct minitalk	g_var = {0, 0};
 
 void	handle_sigusr(int sig, siginfo_t *info, void *context)
 {
@@ -30,17 +30,17 @@ void	handle_sigusr(int sig, siginfo_t *info, void *context)
 		byte = (byte << 1) | 0;
 	else if (sig == SIGUSR2)
 		byte = (byte << 1) | 1;
-	var.nb_byte++;
-	if (var.nb_byte == 8)
+	g_var.nb_byte++;
+	if (g_var.nb_byte == 8)
 	{
-		str[var.index++] = byte;
+		str[g_var.index++] = byte;
 		if (byte == '\0')
 		{
 			ft_printf("Chaîne reçue : %s\n", str);
 			kill(client, SIGUSR2);
-			var.index = 0;
+			g_var.index = 0;
 		}
-		var.nb_byte = 0;
+		g_var.nb_byte = 0;
 		byte = 0;
 	}
 	kill(client, SIGUSR1);
