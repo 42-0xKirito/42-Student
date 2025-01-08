@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 21:38:22 by engiacom          #+#    #+#             */
-/*   Updated: 2025/01/08 18:34:13 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/01/08 18:36:09 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include <unistd.h>
-#include "minitalk.h"
+#include "includes/minitalk.h"
 #include "src/ft_printf.h"
 
 struct minitalk	g_var = {0, 0};
