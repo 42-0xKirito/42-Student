@@ -5,13 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 18:12:27 by engiacom          #+#    #+#             */
-/*   Updated: 2025/01/04 18:14:05 by engiacom         ###   ########.fr       */
+/*   Created: 2025/01/29 15:29:52 by engiacom          #+#    #+#             */
+/*   Updated: 2025/01/29 17:18:55 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct	t_list
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
+
+typedef struct s_stack
 {
-	t_list *content;
-	t_list	*next;
-}	t_struct;
+    int             nbr;
+    struct s_stack  *next;
+}   t_stack;
+
+t_stack	*ft_lstnew(int content);
+int	    ft_atoi(const char *nptr);
+void	append_node(t_stack **a, char **argv);
+
+#endif
