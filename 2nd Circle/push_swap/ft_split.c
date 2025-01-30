@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 22:45:37 by engiacom          #+#    #+#             */
-/*   Updated: 2025/01/29 15:43:41 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:52:35 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static int	ft_split_next(char const *s, char **res, char c)
 	int	x;
 
 	i = 0;
-	x = 0;
+	x = 1;
+	res[0] = 0;
 	while (s[i])
 	{
 		len = 0;

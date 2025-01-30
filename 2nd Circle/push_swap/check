@@ -1,0 +1,31 @@
+1										ok | a and b delcred
+	1.1									ok | a and b set at NULL
+
+
+2										ok | check arg
+	2.1									ok | return error
+
+
+3										ok | use argv ++
+	3.1									ok | use argv = ft_split(argv[1])
+
+
+4										ok | fill node with nbr & index (for now, maybe add more later ; prev, cheapest, above_median ...)
+	4.1									-- Parsing ( atoi(maybe atol) / under/overflow(long) / repetition)
+		4.1.1							-- if error free 'a' / return error
+
+	4.2									-- check long ?
+		4.2.1							-- string to long ?
+
+	4.3									~ok | append node w/ parsing yet
+
+
+5										ok | check a sorted
+	5.1									-- for 2 number | sa if needed
+
+	5.2									ok | sort three
+
+	5.3									-- Algo
+
+
+6										-- | clean stacks (free all ?)
