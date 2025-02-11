@@ -3,73 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kirito <kirito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:31:45 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/11 03:13:11 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/11 20:40:07 by kirito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void	set_cost_to_b(t_stack *a, t_stack *b)
-// {
-// 	t_stack *tmp_a;
-// 	t_stack *tmp_b;
-// 	int		i;
-
-// 	tmp_a = a;
-// 	while (tmp_a)
-// 	{
-// 		i = 1;
-// 		tmp_b = b;
-// 		if (tmp_a->cost_to_top < 0)
-// 			tmp_a->cost_to_top *= -1;
-// 		if ((tmp_a->nbr > tmp_b->nbr) && tmp_b && tmp_b->next)
-// 		{
-// 			if (tmp_b == find_high(tmp_b))
-// 				tmp_a->cost_to_b = i + tmp_a->cost_to_top;
-// 			else if (tmp_a->nbr > ft_lstlast(tmp_b)->nbr)
-// 			{
-// 				while ((tmp_a->nbr > tmp_b->nbr) && tmp_b && tmp_b->next)
-// 				{
-// 					tmp_b = tmp_b->next;
-// 					i++;
-// 				}
-// 				while ((!(tmp_a->nbr < tmp_b->next->nbr)) && tmp_b && tmp_b->next)
-// 				{
-// 					tmp_b = tmp_b->next;
-// 					i++;
-// 				}
-// 				//set_cost_top(b);
-// 				tmp_a->cost_to_b = i + tmp_a->cost_to_top;
-// 			}
-// 			else if (tmp_a->nbr < ft_lstlast(tmp_b)->nbr)
-// 				tmp_a->cost_to_b = i + tmp_a->cost_to_top;
-// 		}
-// 		else
-// 		{
-// 			if (tmp_a->nbr < ft_lstlast(b)->nbr)
-// 			{
-// 				printf("i %d\n", tmp_a->cost_to_top);
-// 				tmp_a->cost_to_b = tmp_a->cost_to_top + 1;
-// 			}
-// 			else
-// 			{
-// 				while ((tmp_a->nbr < tmp_b->nbr) && tmp_b && tmp_b->next)
-// 				{
-// 					tmp_b = tmp_b->next;
-// 					i++;
-// 				}
-// 				tmp_a->cost_to_b = i + tmp_a->cost_to_top;
-// 			}
-// 		}
-// 		if (tmp_a->next)
-// 			tmp_a = tmp_a->next;
-// 		else
-// 			return;
-// 	}
-// }
 
 void	down(t_stack **a, t_stack **b, t_stack *cheap)
 {
@@ -165,8 +106,8 @@ void	cheap_to_top(t_stack **a, t_stack **b)
 	t_stack *tmp_b;
 	t_stack *cheap;
 
-	cheap = set_cheapest(*a);
 	tmp_a = *a;
+	cheap = set_cheapest(tmp_a);
 	tmp_b = *b;
 	if (cheap->cost_to_top >= 0 && cheap->target_node->cost_to_top >= 0)
 		up(a, b, cheap);
@@ -177,18 +118,6 @@ void	cheap_to_top(t_stack **a, t_stack **b)
 	else if (cheap->cost_to_top >= 0 && cheap->target_node->cost_to_top <= 0)
 		pos_neg(a, b, cheap);
 	pb(a, b);
-}
-
-void	set_0(t_stack *stack)
-{
-	t_stack *tmp;
-
-	tmp = stack;
-	while (tmp)
-	{
-		tmp->cheap = 0;
-		tmp = tmp->next;
-	}
 }
 
 int	av(int i)
@@ -222,6 +151,7 @@ void	init_all(t_stack **a, t_stack **b)
 	set_cost_top(*a);
 	set_cost_top(*b);
 	set_target_node(a, b);
+	check_cost(a);
 }
 
 void	target_plus(t_stack *tmp_a, t_stack *tmp_b, t_stack *b)
@@ -341,6 +271,54 @@ void sort_big(t_stack **a, t_stack **b)
 		pa(a, b);
 }
 
+int    check_cost(t_stack **a)
+{
+    t_stack *tmp_a;
+    int        ac;
+    int        atc;
+    int tmp;
+    
+    tmp_a = *a;
+    tmp = set_half(*a, 0);
+    while (tmp_a)
+    {
+        ac = tmp_a->cost_to_top;
+        atc = tmp_a->target_node->cost_to_top;
+        if (ac < 0 && atc > 0)
+        {
+            if ((av(ac) + atc) > tmp && (av(ac) + atc) > ((ac + tmp) + (tmp - atc)) + atc)
+            {
+                tmp_a->real_cost = (ac + tmp) + (tmp - atc);
+                tmp_a->cost_to_top = av(ac) + tmp_a->real_cost;
+            }
+        }
+        else if (ac > 0 && atc < 0)
+        {
+            if ((av(atc) + ac) > tmp && (av(atc) + ac) > ((atc + tmp) + (tmp - ac)) + ac)
+            {
+                tmp_a->target_node->real_cost = (atc + tmp) + (tmp - ac);
+                tmp_a->target_node->cost_to_top = av(atc) + tmp_a->target_node->real_cost;
+            }
+        }
+        else if (ac > 0 && atc > 0)
+        {
+            if (ac > atc)
+                tmp_a->target_node->real_cost = 0;
+            else
+                tmp_a->real_cost = 0;
+        }
+        else if (ac < 0 && atc < 0)
+        {
+            if (ac < atc)
+                tmp_a->target_node->real_cost = 0;
+            else
+                tmp_a->real_cost = 0;
+        }
+        tmp_a = tmp_a->next;
+    }
+    return (0);
+}
+
 void sort(t_stack **a, t_stack **b)
 {
 	if (ft_lstlast(*a)->index == 2)
@@ -357,12 +335,9 @@ void sort(t_stack **a, t_stack **b)
 		pb(a, b);
 		if ((*b)->nbr < (*b)->next->nbr)
 			sb(b, 0);
-		//print_stacks(*a, *b);
 		sort_big(a, b);
 	}
 }
-
-// Check if sorted | return 1 if sorted
 
 int	stack_sorted(t_stack *a)
 {
@@ -382,7 +357,7 @@ void    print_stacks(t_stack *stack_a, t_stack *stack_b)
 	printf("-------\t\t-------\n");
 	while (stack_a != NULL)
 	{
-		printf("[%d] c.%d %d\n", stack_a->cheap, stack_a->nbr, stack_a->nbr);
+		printf("[%d] c.%d %d\n", stack_a->index, stack_a->nbr, stack_a->nbr);
 		stack_a = stack_a->next;
 	}
 	while (stack_b != NULL)

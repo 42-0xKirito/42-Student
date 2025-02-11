@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: kirito <kirito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:29:52 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/11 01:45:28 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/11 20:32:08 by kirito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ typedef struct s_stack
     int             nbr;
 	int				index;
 	int				cost_to_top;
-	int				cost_to_b;
-	int				cheap;
+	int				real_cost;
 	struct s_stack	*target_node;
     struct s_stack  *next;
 }   t_stack;
@@ -63,6 +62,7 @@ void	set_index(t_stack *stack);
 void	set_0(t_stack *stack);
 void	set_target_node(t_stack **a, t_stack **b);
 t_stack	*set_cheapest(t_stack *a);
+int		check_cost(t_stack **a);
 
 
 // Sorting

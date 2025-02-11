@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: kirito <kirito@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:31:44 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/11 00:25:31 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/11 20:11:18 by kirito           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	init(t_stack **a, char **argv)
 {
 	append_node(a, argv);
 	set_index(*a);
-	set_0(*a);
 }
 
 // Set index for each node
