@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:31:45 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/11 01:53:39 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/11 02:05:26 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -292,7 +292,7 @@ void set_cost_top(t_stack *a)
 	half = set_half(a, 0);
 	tmp = set_fs(tmp);
 	i = 2;
-	while (tmp->index <= half && tmp)
+	while (tmp && tmp->index <= half)
 	{
 		tmp->cost_to_top = i;
 		tmp = tmp->next;
@@ -300,7 +300,7 @@ void set_cost_top(t_stack *a)
 	}
 	if ((ft_lstlast(a)->index % 2) != 0)
 		i--;
-	while (tmp->index > half && tmp->next)
+	while (tmp && tmp->next && tmp->index > half)
 	{
 		tmp->cost_to_top = -i;
 		tmp = tmp->next;
