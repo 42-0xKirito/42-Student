@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:31:45 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/11 02:05:26 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/11 02:18:12 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -310,6 +310,25 @@ void set_cost_top(t_stack *a)
 		tmp->cost_to_top = -i;
 }
 
+void max_to_top(t_stack **b)
+{
+	t_stack *high;
+	t_stack *tmp_b;
+	
+	tmp_b = *b;
+	high = find_high(tmp_b);
+	if (high->cost_to_top > 0)
+	{
+		while (*b != high)
+			rb(b, 0);
+	}
+	if (high->cost_to_top < 0)
+	{
+		while (*b != high)
+			rrb(b, 0);
+	}
+}
+
 void sort_big(t_stack **a, t_stack **b)
 {
 	while (*a)
@@ -317,7 +336,7 @@ void sort_big(t_stack **a, t_stack **b)
 		init_all(a, b);
 		cheap_to_top(a, b);
 	}
-	//max_to_top(b);
+	max_to_top(b);
 	while (*b)
 		pa(a, b);
 }
@@ -363,7 +382,7 @@ void    print_stacks(t_stack *stack_a, t_stack *stack_b)
 	printf("-------\t\t-------\n");
 	while (stack_a != NULL)
 	{
-		printf("[%d] c.%d %d\n", stack_a->cheap, stack_a->target_node->nbr, stack_a->nbr);
+		printf("[%d] c.%d %d\n", stack_a->cheap, stack_a->nbr, stack_a->nbr);
 		stack_a = stack_a->next;
 	}
 	while (stack_b != NULL)
@@ -394,10 +413,10 @@ int	main(int argc, char **argv)
 	if (!stack_sorted(a))
 	{
 		sort(&a, &b);
-		print_stacks(a, b);
+		//print_stacks(a, b);
 	}
-	if (stack_sorted(a))
-		printf("ok\n");
-	else
-		printf("not ok\n");
+	// if (stack_sorted(a))
+	// 	printf("ok\n");
+	// else
+	// 	printf("not ok\n");
 }
