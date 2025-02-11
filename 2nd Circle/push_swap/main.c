@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:31:45 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/11 02:18:12 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/11 03:13:11 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ void	cheap_to_top(t_stack **a, t_stack **b)
 	else if (cheap->cost_to_top <= 0 && cheap->target_node->cost_to_top >= 0)
 		neg_pos(a, b, cheap);
 	else if (cheap->cost_to_top >= 0 && cheap->target_node->cost_to_top <= 0)
-		neg_pos(a, b, cheap);
+		pos_neg(a, b, cheap);
 	pb(a, b);
 }
 
