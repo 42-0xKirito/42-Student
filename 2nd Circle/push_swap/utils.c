@@ -6,11 +6,45 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:06:29 by engiacom          #+#    #+#             */
-/*   Updated: 2025/01/30 18:07:19 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/05 20:48:07 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// Find highest/min number in stack
+
+t_stack *find_min(t_stack *a)
+{
+	t_stack *min;
+	
+	if (!a)
+		return NULL;
+	min = a;
+	while (a)
+	{
+		if (a->nbr < min->nbr)
+			min = a;
+		a = a->next;
+	}
+	return (min);
+}
+
+t_stack *find_high(t_stack *a)
+{
+	t_stack *high;
+	
+	if (!a)
+		return NULL;
+	high = a;
+	while (a)
+	{
+		if (a->nbr > high->nbr)
+			high = a;
+		a = a->next;
+	}
+	return (high);
+}
 
 t_stack	*ft_lstlast(t_stack *lst)
 {
@@ -21,11 +55,11 @@ t_stack	*ft_lstlast(t_stack *lst)
 	return (lst);
 }
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	n;
-	int	res;
+	int		i;
+	long	n;
+	int		res;
 
 	i = 0;
 	n = 0;
