@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kirito <kirito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:31:45 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/11 20:40:07 by kirito           ###   ########.fr       */
+/*   Updated: 2025/02/11 23:00:52 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void	init_all(t_stack **a, t_stack **b)
 	set_cost_top(*a);
 	set_cost_top(*b);
 	set_target_node(a, b);
-	check_cost(a);
+	//check_cost(a);
 }
 
 void	target_plus(t_stack *tmp_a, t_stack *tmp_b, t_stack *b)
@@ -259,16 +259,57 @@ void max_to_top(t_stack **b)
 	}
 }
 
-void sort_big(t_stack **a, t_stack **b)
+void	final_sort(t_stack **a, t_stack **b)
 {
-	while (*a)
+	t_stack *tmp_a;
+	t_stack *tmp_b;
+	t_stack *tmp;
+
+	tmp_a = *a;
+	tmp_b = *b;
+	tmp = ft_lstlast(*a);
+	while (tmp->nbr > (*b)->nbr)
+		rra(a, 0);
+	while (*b)
+	{
+		if (tmp->nbr < (*a)->nbr && tmp->nbr > (*b)->nbr)
+		{
+			rra(a, 0);
+			tmp = ft_lstlast(*a);
+		}
+		else
+			pa(a, b);
+	}
+	if ((*a)->nbr > ft_lstlast(*a)->nbr)
+		rra(a, 0);
+}
+
+void	sort_big(t_stack **a, t_stack **b)
+{
+	while (!stack_sorted(*a))
 	{
 		init_all(a, b);
+		if (ft_lstlast(*a)->index <= 3)
+		{
+			sort_three(a);
+			max_to_top(b);
+			final_sort(a, b);
+			return;
+		}
+		
 		cheap_to_top(a, b);
 	}
-	max_to_top(b);
-	while (*b)
-		pa(a, b);
+	// while (*a)
+	// {
+	// 	init_all(a, b);
+	// 	cheap_to_top(a, b);
+	// }
+	// max_to_top(b);
+	// // sort_three(a);
+	// while (*b)
+	// {
+	// 	pa(a, b);
+	// }
 }
 
 int    check_cost(t_stack **a)
@@ -388,6 +429,7 @@ int	main(int argc, char **argv)
 	if (!stack_sorted(a))
 	{
 		sort(&a, &b);
+		//set_index(a);
 		//print_stacks(a, b);
 	}
 	// if (stack_sorted(a))
