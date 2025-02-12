@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kirito <kirito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:31:44 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/11 20:11:18 by kirito           ###   ########.fr       */
+/*   Updated: 2025/02/12 06:24:59 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	init(t_stack **a, char **argv)
 {
@@ -18,22 +18,15 @@ void	init(t_stack **a, char **argv)
 	set_index(*a);
 }
 
-// Set index for each node
-
-void	set_index(t_stack *stack)
+void	init_all(t_stack **a, t_stack **b)
 {
-	int	i;
-
-	i = 1;
-	while (stack)
-	{
-		stack->index = i;
-		stack = stack->next;
-		i++;
-	}
+	set_index(*a);
+	set_index(*b);
+	set_cost_top(*a);
+	set_cost_top(*b);
+	set_target_node(a, b);
+	set_real_cost(a);
 }
-
-// fill a->nbr then a->next->nbr ...
 
 void	append_node(t_stack **a, char **argv)
 {

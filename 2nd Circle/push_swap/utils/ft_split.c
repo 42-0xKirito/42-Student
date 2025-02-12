@@ -6,11 +6,11 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 22:45:37 by engiacom          #+#    #+#             */
-/*   Updated: 2025/01/30 15:52:35 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/12 06:33:10 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static char	**ft_cw(char const *s, char c)
 {
@@ -19,7 +19,7 @@ static char	**ft_cw(char const *s, char c)
 	char	**tab;
 
 	i = 0;
-	w = 0;
+	w = 1;
 	while (s[i])
 	{
 		while (s[i] == c && s[i])

@@ -6,16 +6,16 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:33:40 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/05 20:47:58 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/12 06:23:43 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	check_digit(char **argv)
 {
-	int i;
-	int k;
+	int	i;
+	int	k;
 
 	i = 0;
 	while (argv[i])
@@ -34,8 +34,6 @@ int	check_digit(char **argv)
 	}
 	return (1);
 }
-
-// check doublon
 
 int	check_repetition(char **argv)
 {
@@ -57,11 +55,9 @@ int	check_repetition(char **argv)
 	return (1);
 }
 
-// Check Under/Overflow
-
-int check_flow(char **argv)
+int	check_flow(char **argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (argv[i])

@@ -5,21 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 18:06:29 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/05 20:48:07 by engiacom         ###   ########.fr       */
+/*   Created: 2025/02/12 07:01:33 by engiacom          #+#    #+#             */
+/*   Updated: 2025/02/12 07:45:40 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-// Find highest/min number in stack
-
-t_stack *find_min(t_stack *a)
+t_stack	*find_min(t_stack *a)
 {
-	t_stack *min;
-	
+	t_stack	*min;
+
 	if (!a)
-		return NULL;
+		return (NULL);
 	min = a;
 	while (a)
 	{
@@ -30,12 +28,12 @@ t_stack *find_min(t_stack *a)
 	return (min);
 }
 
-t_stack *find_high(t_stack *a)
+t_stack	*find_high(t_stack *a)
 {
-	t_stack *high;
-	
+	t_stack	*high;
+
 	if (!a)
-		return NULL;
+		return (NULL);
 	high = a;
 	while (a)
 	{
