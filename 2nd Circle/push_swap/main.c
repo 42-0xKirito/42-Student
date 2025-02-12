@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:31:45 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/11 23:00:52 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/12 03:29:28 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,15 +107,16 @@ void	cheap_to_top(t_stack **a, t_stack **b)
 	t_stack *cheap;
 
 	tmp_a = *a;
-	cheap = set_cheapest(tmp_a);
+	cheap = set_cheapest(a, b);
+	set_target_node(a, b);
 	tmp_b = *b;
 	if (cheap->cost_to_top >= 0 && cheap->target_node->cost_to_top >= 0)
 		up(a, b, cheap);
-	else if (cheap->cost_to_top <= 0 && cheap->target_node->cost_to_top <= 0)
+	else if (cheap->cost_to_top < 0 && cheap->target_node->cost_to_top < 0)
 		down(a, b, cheap);
-	else if (cheap->cost_to_top <= 0 && cheap->target_node->cost_to_top >= 0)
+	else if (cheap->cost_to_top < 0 && cheap->target_node->cost_to_top >= 0)
 		neg_pos(a, b, cheap);
-	else if (cheap->cost_to_top >= 0 && cheap->target_node->cost_to_top <= 0)
+	else if (cheap->cost_to_top >= 0 && cheap->target_node->cost_to_top < 0)
 		pos_neg(a, b, cheap);
 	pb(a, b);
 }
@@ -127,21 +128,52 @@ int	av(int i)
 	return (i);
 }
 
-t_stack	*set_cheapest(t_stack *a)
+t_stack	*set_cheapest(t_stack **a, t_stack **b)
 {
 	t_stack *tmp_a;
 	t_stack *current;
 
-	tmp_a = a;
+	//init_all(a, b);
+	tmp_a = *a;
 	current = tmp_a;
 	while (tmp_a)
 	{
-		if (av(current->cost_to_top) + av(current->target_node->cost_to_top) >
-				av(tmp_a->cost_to_top) + av(tmp_a->target_node->cost_to_top))
+		if (av(current->real_cost) > av(tmp_a->real_cost))
 			current = tmp_a;
 		tmp_a = tmp_a->next;
 	}
 	return(current);
+}
+
+void	set_real_cost(t_stack **a, t_stack **b)
+{
+	t_stack *tmp;
+	int		ac;
+	int		atc;
+
+	tmp = *a;
+	while (tmp)
+	{
+		ac = tmp->cost_to_top;
+		atc = tmp->target_node->cost_to_top;
+		if (ac >= 0 && atc >= 0)
+		{
+			if (ac > atc)
+				tmp->real_cost = ac;
+			else
+				tmp->real_cost = atc;
+		}
+		else if (ac < 0 && atc < 0)
+		{
+			if (ac < atc)
+				tmp->real_cost = av(ac);
+			else
+				tmp->real_cost = av(atc);
+		}
+		else
+			tmp->real_cost = av(ac) + av(atc);
+		tmp = tmp->next;
+	}
 }
 
 void	init_all(t_stack **a, t_stack **b)
@@ -151,7 +183,8 @@ void	init_all(t_stack **a, t_stack **b)
 	set_cost_top(*a);
 	set_cost_top(*b);
 	set_target_node(a, b);
-	//check_cost(a);
+	set_real_cost(a, b);
+	// check_cost(a, b);
 }
 
 void	target_plus(t_stack *tmp_a, t_stack *tmp_b, t_stack *b)
@@ -269,7 +302,10 @@ void	final_sort(t_stack **a, t_stack **b)
 	tmp_b = *b;
 	tmp = ft_lstlast(*a);
 	while (tmp->nbr > (*b)->nbr)
+	{
 		rra(a, 0);
+		tmp = ft_lstlast(*a);
+	}
 	while (*b)
 	{
 		if (tmp->nbr < (*a)->nbr && tmp->nbr > (*b)->nbr)
@@ -286,17 +322,17 @@ void	final_sort(t_stack **a, t_stack **b)
 
 void	sort_big(t_stack **a, t_stack **b)
 {
-	while (!stack_sorted(*a))
+	while (*a)
 	{
 		init_all(a, b);
-		if (ft_lstlast(*a)->index <= 3)
+		if (ft_lstlast(*a)->index <= 5)
 		{
-			sort_three(a);
+			if (!stack_sorted(*a))
+				sort_five(a, b);
 			max_to_top(b);
 			final_sort(a, b);
 			return;
 		}
-		
 		cheap_to_top(a, b);
 	}
 	// while (*a)
@@ -312,36 +348,40 @@ void	sort_big(t_stack **a, t_stack **b)
 	// }
 }
 
-int    check_cost(t_stack **a)
+int    check_cost(t_stack **a, t_stack **b)
 {
     t_stack *tmp_a;
     int        ac;
     int        atc;
     int tmp;
+	int tmpb;
     
     tmp_a = *a;
-    tmp = set_half(*a, 0);
+    // tmp = set_half(*a, 0);
+	// tmpb = set_half(*b, 0);
+	// if (ft_lstlast(*a)->index < tmpb)
+	// 	return (0);
     while (tmp_a)
     {
         ac = tmp_a->cost_to_top;
         atc = tmp_a->target_node->cost_to_top;
-        if (ac < 0 && atc > 0)
-        {
-            if ((av(ac) + atc) > tmp && (av(ac) + atc) > ((ac + tmp) + (tmp - atc)) + atc)
-            {
-                tmp_a->real_cost = (ac + tmp) + (tmp - atc);
-                tmp_a->cost_to_top = av(ac) + tmp_a->real_cost;
-            }
-        }
-        else if (ac > 0 && atc < 0)
-        {
-            if ((av(atc) + ac) > tmp && (av(atc) + ac) > ((atc + tmp) + (tmp - ac)) + ac)
-            {
-                tmp_a->target_node->real_cost = (atc + tmp) + (tmp - ac);
-                tmp_a->target_node->cost_to_top = av(atc) + tmp_a->target_node->real_cost;
-            }
-        }
-        else if (ac > 0 && atc > 0)
+        // if (ac < 0 && atc > 0)
+        // {
+        //     if ((av(ac) + atc) > tmp + (tmp - av(ac)))
+        //     {
+        //         tmp_a->real_cost = (ac + tmp) + (tmp - atc);
+        //         tmp_a->cost_to_top = av(ac) + tmp_a->real_cost;
+        //     }
+        // }
+        // else if (ac > 0 && atc < 0)
+        // {
+        //     if ((av(atc) + ac) > tmpb + (tmpb - av(atc)))
+        //     {
+        //         tmp_a->target_node->real_cost = (atc + tmp) + (tmp - ac);
+        //         tmp_a->target_node->cost_to_top = av(atc) + tmp_a->target_node->real_cost;
+        //     }
+        // }
+        if (ac >= 0 && atc >= 0)
         {
             if (ac > atc)
                 tmp_a->target_node->real_cost = 0;

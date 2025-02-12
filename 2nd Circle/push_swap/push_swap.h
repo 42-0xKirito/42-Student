@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kirito <kirito@student.42.fr>              +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:29:52 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/11 20:32:08 by kirito           ###   ########.fr       */
+/*   Updated: 2025/02/12 03:10:12 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ void	append_node(t_stack **a, char **argv);
 void	set_index(t_stack *stack);
 void	set_0(t_stack *stack);
 void	set_target_node(t_stack **a, t_stack **b);
-t_stack	*set_cheapest(t_stack *a);
-int		check_cost(t_stack **a);
+t_stack	*set_cheapest(t_stack **a, t_stack **b);
+int		check_cost(t_stack **a, t_stack **b);
+void	init_all(t_stack **a, t_stack **b);
 
 
 // Sorting
