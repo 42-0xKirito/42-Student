@@ -3,7 +3,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = $(shell find ./cheapest ./commands ./init ./parsing ./sorting ./utils -type f -name "*.c") main.c
+SRCS = $(shell find ./cheapest ./commands ./free ./init ./parsing ./sorting ./utils -type f -name "*.c") main.c
 
 OBJS = $(SRCS:.c=.o)
 

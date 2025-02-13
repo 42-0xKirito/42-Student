@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:31:45 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/12 07:09:38 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:58:05 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,19 @@ int	stack_sorted(t_stack *a)
 	return (1);
 }
 
-void	ft_lstclear(t_stack **lst)
+int	arg_sorted(char **argv)
 {
-	t_stack	*tmp;
+	int	i;
 
-	while (*lst != NULL)
+	i = 0;
+	while (argv[i])
 	{
-		tmp = (*lst)->next;
-		free ((*lst));
-		*lst = tmp;
+		if (ft_atoi(argv[i]) < ft_atoi(argv[i + 1]) && argv[i + 2])
+			i++;
+		else
+			return (0);
 	}
-	*lst = NULL;
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -48,16 +50,14 @@ int	main(int argc, char **argv)
 		return (1);
 	if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-	if (check_args(argv))
+	if (check_args(argv, argc))
+		return (write(1, "Error\n", 6), 1);
+	if (argc == 2 && argv[2] == NULL)
+		return (free_arg(argv), 1);
+	if (!arg_sorted(argv + 1))
 	{
-		write(1, "Error\n", 6);
-		return (1);
-	}
-	init(&a, argv);
-	if (!stack_sorted(a))
+		init(&a, argv);
 		sort(&a, &b);
-	if (a)
-		ft_lstclear(&a);
-	if (b)
-		ft_lstclear(&b);
+	}
+	free_all(argv, argc, a, b);
 }

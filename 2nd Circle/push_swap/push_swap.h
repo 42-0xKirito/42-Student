@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:29:52 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/12 05:48:34 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:59:09 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	set_target_node(t_stack **a, t_stack **b);
 void	target_plus(t_stack *tmp_a, t_stack *tmp_b, t_stack *b);
 
 //	parse.c
-int		check_args(char **argv);
+int		check_args(char **argv, int argc);
 int		check_flow(char **argv);
 int		check_digit(char **argv);
 int		check_repetition(char **argv);
@@ -107,6 +107,12 @@ void	min_on_top(t_stack **a, t_stack *min);
 
 //	main.c
 int		stack_sorted(t_stack *a);
+int		arg_sorted(char **argv);
 int		main(int argc, char **argv);
+
+//	free.c
+void	free_arg(char **argv);
+void	free_all(char **argv, int argc, t_stack *a, t_stack *b);
+void	ft_lstclear(t_stack **lst);
 
 #endif

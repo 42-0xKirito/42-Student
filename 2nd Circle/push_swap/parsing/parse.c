@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:33:40 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/12 06:23:43 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:54:27 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,14 @@ int	check_flow(char **argv)
 	return (1);
 }
 
-int	check_args(char **argv)
+int	check_args(char **argv, int argc)
 {
-	if (!check_digit(argv + 1))
+	if (!check_digit(argv + 1) || !check_flow(argv + 1)
+		|| !check_repetition(argv + 1))
+	{
+		if (argc == 2)
+			free_arg(argv);
 		return (1);
-	if (!check_flow(argv + 1))
-		return (1);
-	if (!check_repetition(argv + 1))
-		return (1);
+	}
 	return (0);
 }
