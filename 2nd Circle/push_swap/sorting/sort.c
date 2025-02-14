@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 04:21:41 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/12 07:37:26 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/14 02:28:53 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	spam_min(t_stack **a, t_stack **b)
 	int	i;
 
 	i = 0;
-	while (ft_lstlast(*a)->index != 5)
+	while (ft_lstlast(*a)->index > 5)
 	{
 		set_index(*a);
 		min_on_top(a, find_min(*a));
@@ -54,10 +54,15 @@ void	spam_min(t_stack **a, t_stack **b)
 
 void	sort_big(t_stack **a, t_stack **b)
 {
+	int	i;
+
+	i = (ft_lstlast(*a)->index + 2) / 10;
+	if (i < 5)
+		i = 6;
 	while (*a)
 	{
 		init_all(a, b);
-		if (ft_lstlast(*a)->index <= (set_half(*b, 0) * 0.15))
+		if (ft_lstlast(*a)->index <= i)
 		{
 			if (!stack_sorted(*a))
 				spam_min(a, b);
@@ -74,10 +79,13 @@ void	final_sort(t_stack **a, t_stack **b)
 	t_stack	*tmp;
 
 	tmp = ft_lstlast(*a);
-	while (tmp->nbr > (*b)->nbr)
+	if (!(find_min(*a)->nbr > (*b)->nbr))
 	{
-		rra(a, 0);
-		tmp = ft_lstlast(*a);
+		while (tmp->nbr > (*b)->nbr)
+		{
+			rra(a, 0);
+			tmp = ft_lstlast(*a);
+		}
 	}
 	while (*b)
 	{
@@ -89,6 +97,6 @@ void	final_sort(t_stack **a, t_stack **b)
 		else
 			pa(a, b);
 	}
-	if ((*a)->nbr > ft_lstlast(*a)->nbr)
+	while ((*a)->nbr > ft_lstlast(*a)->nbr)
 		rra(a, 0);
 }

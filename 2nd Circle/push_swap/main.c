@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:31:45 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/13 17:58:05 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/14 01:36:59 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,9 @@ int	arg_sorted(char **argv)
 	i = 0;
 	while (argv[i])
 	{
-		if (ft_atoi(argv[i]) < ft_atoi(argv[i + 1]) && argv[i + 2])
-			i++;
-		else
+		if (argv[i + 1] && !(ft_atoi(argv[i]) < ft_atoi(argv[i + 1])))
 			return (0);
+		i++;
 	}
 	return (1);
 }

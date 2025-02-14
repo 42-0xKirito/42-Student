@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 07:01:15 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/12 07:45:51 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/14 01:27:39 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	min_on_top(t_stack **a, t_stack *min)
 {
 	while ((*a) != min)
 	{
-		if (min->index < ft_lstlast(*a)->index / 2)
+		if (min->index <= ft_lstlast(*a)->index / 2)
 			ra(a, 0);
 		else
 			rra(a, 0);
