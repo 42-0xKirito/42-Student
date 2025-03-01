@@ -6,68 +6,59 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:48:21 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/19 06:14:03 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:45:31 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	cpy_map(t_data *data)
+void	move_count()
 {
-	int	i;
-	int	k;
-	int	fd;
-	char	*tmp;
+	static int	i;
 
-	i = 0;
-	fd = open("./map/map.ber", O_RDONLY);
-	while (get_next_line(fd))
-		i++;
-	data->map.map = malloc(sizeof(char **) * (i + 1));
-	close(fd);
-	fd = open("./map/map.ber", O_RDONLY);
-	tmp = get_next_line(fd);
-	k = ft_strlen(tmp);
-	i = 0;
-	if (tmp[k - 1] == '\n')
-		tmp[k - 1] = 0;
-	while (tmp)
-	{
-		data->map.map[i++] = tmp;
-		if (tmp[k - 1] == '\n')
-			tmp[k - 1] = 0;
-		tmp = get_next_line(fd);
-	}
-	return (close(fd), data->map.map_w = (k - 1) * 64, data->map.map_h = i * 64);
+	i++;
+	ft_printf("Move n⁰%d\n", i);
 }
 
-t_col	*ft_lstnewC()
+void	set_f_pos(t_lists *f, t_data *data)
 {
-	t_col	*new;
-
-	new = malloc(sizeof(t_col));
-	if (new == NULL)
-		return (NULL);
-	new->next = NULL;
-	return (new);
+	f->x = data->play.x;
+	f->y = data->play.y;
 }
 
-int	main()
+int	close_win(int keycode, t_data *data)
+{
+	(void)keycode;
+	ft_error(data, 0);
+	mlx_destroy_window(data->mlx.mlx, data->mlx.mlx_win);
+	exit(0);
+	return(0);
+}
+
+int	mlx_main(t_data *data)
+{
+	data->mlx.mlx = mlx_init();
+	data->mlx.mlx_win = mlx_new_window(data->mlx.mlx, (data->map.map_w), (data->map.map_h), "so_long");
+	set_image(data);
+	set_1st_image(data);
+	mlx_key_hook(data->mlx.mlx_win, key_hook, data);
+	//mlx_hook(data->mlx.mlx_win, 17, 1L<<0, close_win, data);
+	mlx_loop(data->mlx.mlx);
+	return (0);
+}
+
+int	main(int ac, char **av)
 {
 	t_data	data;
 	
-	cpy_map(&data);
-	if(check_map(&data))
-	{
-		return (1);
+	if (ac == 2)
+	{	
+		if (cpy_map(&data, av[1]))
+			return (ft_error(&data, 1), 1);
+		if(check_map(&data, av[1]))
+			return (ft_error(&data, 1), 1);
+		mlx_main(&data);
+		return (0);
 	}
-	set_C_pos(&data);
-	printf("%d\n", data.map.C);
-	data.mlx.mlx = mlx_init();
-	data.mlx.mlx_win = mlx_new_window(data.mlx.mlx, (data.map.map_w), (data.map.map_h), "so_long");
-	set_image(&data);
-	set_1st_image(&data);
-	mlx_key_hook(data.mlx.mlx_win, key_hook, &data);
-	mlx_loop(data.mlx.mlx);
-	return (0);
+	return (ft_error(&data, 1), 1);
 }

@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 05:57:34 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/19 06:04:11 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:05:53 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,16 @@ int	check_wall(t_data *data)
 	return (0);
 }
 
-int	check_map(t_data *data)
+int	check_map(t_data *data, char *av)
 {
 	if (check_rectangle(data))
 		return (1);
 	if (check_wall(data))
-		return(1);
+		return (1);
 	if (check_item(data))
+		return (1);
+	set_player_pos(data);
+	if (check_if_finish(data, av))
 		return (1);
 	return (0);
 }

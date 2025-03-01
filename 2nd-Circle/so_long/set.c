@@ -6,17 +6,17 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 06:09:49 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/19 06:14:11 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:06:10 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_collec(t_col **collec, t_data *data)
+void	init_collec(t_lists **collec, t_data *data)
 {
 	int	i;
-	t_col	*tmp;
-	t_col	*tmp_p;
+	t_lists	*tmp;
+	t_lists	*tmp_p;
 
 	i = data->map.C;
 	tmp = ft_lstnewC();
@@ -30,7 +30,7 @@ void	init_collec(t_col **collec, t_data *data)
 	}
 }
 
-void	set_c_val(t_col *col, int i, int k)
+void	set_c_val(t_lists *col, int i, int k)
 {
 	col->val = 0;
 	col->x = i;
@@ -43,8 +43,8 @@ void	set_C_pos(t_data *data)
 	int	i;
 	int	k;
 	char	**tmp;
-	t_col *collec;
-	t_col *tmpp;
+	t_lists *collec;
+	t_lists *tmpp;
 	
 	tmp = data->map.map;
 	i = 0;
