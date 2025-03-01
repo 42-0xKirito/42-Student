@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cpy_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:01:43 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/27 17:05:49 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/01 12:10:21 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	alloc_map(t_data *data, char *av)
 	data->map.map = malloc(sizeof(char **) * (i + 1));
 	if (data->map.map == NULL)
 		return (1);
+	data->map.map[i] = NULL;
 	close(fd);
 	return (0);
 }
@@ -71,6 +72,7 @@ int	alloc_tmap(t_data *data, char *av)
 	data->tmap.map = malloc(sizeof(char **) * (i + 1));
 	if (data->tmap.map == NULL)
 		return (1);
+	data->tmap.map[i] = NULL;
 	close(fd);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 05:57:34 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/27 17:05:53 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/01 12:15:31 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	check_item(t_data *data)
 
 	i = 0;
 	data->map.C = 0;
+	data->map.P = 0;
+	data->map.E = 0;
 	map = data->map.map;
 	while (map[i])
 	{

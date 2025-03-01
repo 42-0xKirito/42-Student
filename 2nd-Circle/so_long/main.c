@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:48:21 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/27 17:45:31 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/01 11:08:46 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,5 @@ int	main(int ac, char **av)
 		mlx_main(&data);
 		return (0);
 	}
-	return (ft_error(&data, 1), 1);
+	return (1);
 }
