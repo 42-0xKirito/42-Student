@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 05:55:01 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/27 17:41:22 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/01 15:09:10 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,15 @@ int	move_down(t_data *data)
 
 int	key_hook(int keycode, t_data *data)
 {
-	if (keycode == 0 || keycode == 123)
+	if (keycode == 97 || keycode == 65361)
 		move_left(data);
-	else if (keycode == 2 || keycode == 124)
+	else if (keycode == 100 || keycode == 65363)
 		move_right(data);
-	else if (keycode == 13 || keycode == 126)
+	else if (keycode == 119 || keycode == 65362)
 		move_up(data);
-	else if (keycode == 1 || keycode == 125)
+	else if (keycode == 115 || keycode == 65364)
 		move_down(data);
-	else if (keycode == 53)
-		close_win(53, data);
+	else if (keycode == 65307)
+		close_win(65307, data);
 	return (0);
 }
