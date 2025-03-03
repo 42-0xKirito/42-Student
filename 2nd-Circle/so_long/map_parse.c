@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 16:58:52 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/27 17:05:58 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/03 11:53:54 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,9 @@ int	check_exit(t_lists **f, t_data *data)
 
 int	check_fin(t_lists *f, t_data *data)
 {
+	int	i;
+
+	i = 0;
 	while (f)
 	{
 		data->tmap.map[f->x][f->y] = '1';
@@ -90,6 +93,15 @@ int	check_fin(t_lists *f, t_data *data)
 				delfront(&f);
 			return (0);
 		}
+	}
+	if (data->tmap.map)
+	{
+		while (data->tmap.map[i])
+		{
+			free (data->tmap.map[i]);
+			i++;
+		}
+		free (data->tmap.map);
 	}
 	return (1);
 }

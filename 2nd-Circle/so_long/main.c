@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:48:21 by engiacom          #+#    #+#             */
-/*   Updated: 2025/03/01 15:28:56 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/03 11:46:51 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	close_win(int keycode, t_data *data)
 {
 	(void)keycode;
 	ft_error(data, 0);
-	mlx_destroy_window(data->mlx.mlx, data->mlx.mlx_win);
 	destroy_image(data);
+	mlx_destroy_window(data->mlx.mlx, data->mlx.mlx_win);
 	if (data->mlx.mlx)
 		free (data->mlx.mlx);
 	if (data)

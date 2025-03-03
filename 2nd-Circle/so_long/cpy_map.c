@@ -6,7 +6,7 @@
 /*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:01:43 by engiacom          #+#    #+#             */
-/*   Updated: 2025/03/01 12:10:21 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/03 11:29:12 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	cpy_map(t_data *data, char *av)
 			tmp[k - 1] = 0;
 		tmp = get_next_line(fd);
 	}
+	if (tmp)
+		free (tmp);
 	return (close(fd), data->map.map_w = (k - 1) * 64, data->map.map_h = i * 64, 0);
 }
 
@@ -101,5 +103,7 @@ int	cpy_tmap(t_data *data, char *av)
 			tmp[k - 1] = 0;
 		tmp = get_next_line(fd);
 	}
+	if (tmp)
+		free (tmp);
 	return (close(fd), data->tmap.map_w = (k - 1) * 64, data->tmap.map_h = i * 64, 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 05:55:01 by engiacom          #+#    #+#             */
-/*   Updated: 2025/03/01 15:09:10 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/03 11:25:01 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	move_left(t_data *data)
 		move_count();
 	}
 	else if (data->map.map[(data->play.y)][data->play.x - 1] == 'E' && data->map.C == 0)
-		printf("GG\n");
+		close_win(53, data);
 	return (0);
 }
 
@@ -48,7 +48,7 @@ int	move_right(t_data *data)
 		move_count();
 	}
 	else if (data->map.map[(data->play.y)][data->play.x + 1] == 'E' && data->map.C == 0)
-		printf("GG\n");
+		close_win(53, data);
 	return (0);
 }
 
@@ -68,7 +68,7 @@ int	move_up(t_data *data)
 		move_count();
 	}
 	else if (data->map.map[(data->play.y - 1)][data->play.x] == 'E' && data->map.C == 0)
-		printf("GG\n");
+		close_win(53, data);
 	return (0);
 }
 
@@ -88,7 +88,7 @@ int	move_down(t_data *data)
 		move_count();
 	}
 	else if (data->map.map[(data->play.y + 1)][data->play.x] == 'E' && data->map.C == 0)
-		printf("GG\n");
+		close_win(53, data);
 	return (0);
 }
 

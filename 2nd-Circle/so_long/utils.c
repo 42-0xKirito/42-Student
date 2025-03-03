@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 16:55:36 by engiacom          #+#    #+#             */
-/*   Updated: 2025/03/01 14:50:12 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/03 11:55:03 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,18 @@ void	check_col(char c, t_data *data)
 }
 void	ft_error(t_data *data, int x)
 {
-	// if (data->mlx.mlx)
-	// 	free (data->mlx.mlx);
-	// if (data->mlx.mlx_win)
-	// 	free (data->mlx.mlx_win);
+	int i;
+
+	i = 0;
 	if (data->map.map)
+	{
+		while (data->map.map[i])
+		{
+			free (data->map.map[i]);
+			i++;
+		}
 		free (data->map.map);
-	if (data->tmap.map)
-		free (data->tmap.map);
-	// if (data)
-	// 	free (data);
+	}
 	if (x == 1)
 		ft_printf("Error\n");
 }
