@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 05:55:01 by engiacom          #+#    #+#             */
-/*   Updated: 2025/03/04 17:19:33 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/04 18:05:31 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	move_left(t_data *data)
 			data->map.c == 0)
 	{
 		move_count();
+		print_gg();
 		close_win(53, data);
 	}
 	return (0);
@@ -63,6 +64,7 @@ int	move_right(t_data *data)
 			data->map.c == 0)
 	{
 		move_count();
+		print_gg();
 		close_win(53, data);
 	}
 	return (0);
@@ -91,6 +93,7 @@ int	move_up(t_data *data)
 			data->map.c == 0)
 	{
 		move_count();
+		print_gg();
 		close_win(53, data);
 	}
 	return (0);
@@ -119,6 +122,7 @@ int	move_down(t_data *data)
 			data->map.c == 0)
 	{
 		move_count();
+		print_gg();
 		close_win(53, data);
 	}
 	return (0);
