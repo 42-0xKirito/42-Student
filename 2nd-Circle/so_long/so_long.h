@@ -6,18 +6,18 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:49:41 by engiacom          #+#    #+#             */
-/*   Updated: 2025/02/27 17:41:10 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:18:04 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include <mlx.h>
-#include <libft.h>
-#include <ft_printf.h>
+# include <mlx.h>
+# include <libft.h>
+# include <ft_printf.h>
 
-typedef struct	s_lists
+typedef struct s_lists
 {
 	int				x;
 	int				y;
@@ -25,15 +25,14 @@ typedef struct	s_lists
 	struct s_lists	*next;
 }				t_lists;
 
-
-typedef	struct	s_val
+typedef struct s_val
 {
 	int	i;
 	int	k;
 	int	j;
 }				t_val;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	char	*addr;
@@ -42,11 +41,11 @@ typedef struct	s_img
 	int		endian;
 }				t_img;
 
-typedef	struct	s_map
+typedef struct s_map
 {
-	int		C;
-	int		E;
-	int		P;
+	int		c;
+	int		e;
+	int		p;
 	int		map_w;
 	int		map_h;
 	char	**map;
@@ -58,14 +57,13 @@ typedef struct s_mlx
 	void	*mlx_win;
 }				t_mlx;
 
-typedef	struct	s_pos
+typedef struct s_pos
 {
 	int	x;
 	int	y;
 }				t_pos;
 
-
-typedef	struct	s_data
+typedef struct s_data
 {
 	t_mlx		mlx;
 	t_map		map;
@@ -105,22 +103,24 @@ int			move(t_data *data, t_lists **f, int x, int y);
 int			cpy_tmap(t_data *data, char *av);
 int			alloc_tmap(t_data *data, char *av);
 int			alloc_map(t_data *data, char *av);
+void		destroy_image(t_data *data);
 int			close_win(int keycode, t_data *data);
+int			close_winx(t_data *data);
 void		set_f_pos(t_lists *f, t_data *data);
 void		check_col(char c, t_data *data);
 void		lstadd_front(t_lists **lst);
 void		delfront(t_lists **f);
 void		ft_error(t_data *data, int x);
-void		move_count();
+void		move_count(void);
 int			mlx_main(t_data *data);
 void		set_item(char **map, int i, int k, t_data *data);
 void		set_image(t_data *data);
 void		set_1st_image(t_data *data);
 void		set_player_pos(t_data *data);
 void		set_exit_pos(t_data *data);
-void		set_C_pos(t_data *data);
+void		set_c_pos(t_data *data);
 void		set_c_val(t_lists *col, int i, int k);
 void		init_collec(t_lists **collec, t_data *data);
-t_lists		*ft_lstnewC();
+t_lists		*ft_lstnewc(void);
 
 #endif

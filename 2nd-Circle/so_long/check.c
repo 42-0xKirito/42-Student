@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: engiacom <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 05:57:34 by engiacom          #+#    #+#             */
-/*   Updated: 2025/03/01 12:15:31 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:18:59 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	check_rectangle(t_data *data)
 {
-	int	i;
-	int	k;
-	char **map;
-	
+	int		i;
+	int		k;
+	char	**map;
+
 	i = 0;
 	map = data->map.map;
 	k = (int)ft_strlen(map[i]);
@@ -33,11 +33,11 @@ int	check_rectangle(t_data *data)
 void	set_item(char **map, int i, int k, t_data *data)
 {
 	if (map[i][k] == 'C')
-		data->map.C++;
+		data->map.c++;
 	else if (map[i][k] == 'P')
-		data->map.P++;
+		data->map.p++;
 	else if (map[i][k] == 'E')
-		data->map.E++;
+		data->map.e++;
 }
 
 int	check_item(t_data *data)
@@ -47,9 +47,9 @@ int	check_item(t_data *data)
 	char	**map;
 
 	i = 0;
-	data->map.C = 0;
-	data->map.P = 0;
-	data->map.E = 0;
+	data->map.c = 0;
+	data->map.p = 0;
+	data->map.e = 0;
 	map = data->map.map;
 	while (map[i])
 	{
@@ -61,17 +61,17 @@ int	check_item(t_data *data)
 		}
 		i++;
 	}
-	if (data->map.E != 1 || data->map.P != 1 || data->map.C == 0)
+	if (data->map.e != 1 || data->map.p != 1 || data->map.c == 0)
 		return (1);
 	return (0);
 }
 
 int	check_wall(t_data *data)
 {
-	int	i;
-	int	k;
-	char **map;
-	
+	int		i;
+	int		k;
+	char	**map;
+
 	i = 0;
 	k = 0;
 	map = data->map.map;
@@ -84,7 +84,7 @@ int	check_wall(t_data *data)
 				return (1);
 			if (i == (data->map.map_h / 64) - 1 && map[i][k] != '1')
 				return (1);
-			k++;	
+			k++;
 		}
 		if (map[i][k - 1] != '1')
 			return (1);

@@ -1,5 +1,5 @@
 NAME = so_long
-SRCS = main.c check.c image.c move.c put.c set.c map_parse.c utils.c cpy_map.c
+SRCS = main.c check.c image.c move.c put.c set.c map_parse.c utils.c cpy_map.c close.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
