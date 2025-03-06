@@ -14,7 +14,7 @@ else
     MLX_FLAGS = -I$(MLX_DIR) -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
 endif
 
-all: $(NAME)
+all: $(NAME) clean
 
 $(NAME): $(OBJS)
 	@make -C libft
