@@ -1,5 +1,5 @@
 NAME = so_long
-SRCS = main.c check.c image.c move.c put.c set.c map_parse.c utils.c cpy_map.c close.c
+SRCS = main.c check.c image.c move.c put.c set.c map_parse.c utils.c cpy_map.c close.c check2.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
@@ -14,7 +14,7 @@ else
     MLX_FLAGS = -I$(MLX_DIR) -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
 endif
 
-all: $(NAME) clean
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	@make -C libft

@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 05:57:34 by engiacom          #+#    #+#             */
-/*   Updated: 2025/03/04 17:18:59 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:04:32 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,10 @@ int	check_wall(t_data *data)
 
 int	check_map(t_data *data, char *av)
 {
+	if (rm_nl(data))
+		return (1);
+	if (check_char(data))
+		return (1);
 	if (check_rectangle(data))
 		return (1);
 	if (check_wall(data))

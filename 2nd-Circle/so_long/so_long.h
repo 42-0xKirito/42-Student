@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:49:41 by engiacom          #+#    #+#             */
-/*   Updated: 2025/03/04 18:05:01 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:05:05 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ int			move(t_data *data, t_lists **f, int x, int y);
 int			cpy_tmap(t_data *data, char *av);
 int			alloc_tmap(t_data *data, char *av);
 void		print_gg(void);
+int			rm_nl(t_data *data);
+int			check_char(t_data *data);
 int			alloc_map(t_data *data, char *av);
 void		destroy_image(t_data *data);
 int			close_win(int keycode, t_data *data);

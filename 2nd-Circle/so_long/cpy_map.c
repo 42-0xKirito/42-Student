@@ -6,7 +6,7 @@
 /*   By: engiacom <engiacom@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:01:43 by engiacom          #+#    #+#             */
-/*   Updated: 2025/03/04 17:02:13 by engiacom         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:56:23 by engiacom         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,10 @@ int	cpy_map(t_data *data, char *av)
 	tmp = get_next_line(fd);
 	if (tmp == NULL)
 		return (1);
-	k = ft_strlen(tmp);
 	i = 0;
+	k = ft_strlen(tmp);
 	while (tmp)
 	{
-		if (tmp[k - 1] == '\n')
-			tmp[k - 1] = 0;
 		data->map.map[i++] = tmp;
 		tmp = get_next_line(fd);
 	}
@@ -119,12 +117,10 @@ int	cpy_tmap(t_data *data, char *av)
 	tmp = get_next_line(fd);
 	if (tmp == NULL)
 		return (1);
-	k = ft_strlen(tmp);
 	i = 0;
+	k = ft_strlen(tmp);
 	while (tmp)
 	{
-		if (tmp[k - 1] == '\n')
-			tmp[k - 1] = 0;
 		data->tmap.map[i++] = tmp;
 		tmp = get_next_line(fd);
 	}
